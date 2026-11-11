@@ -1,17 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { execute } from "./execute";
 import { createEmptyRepo } from "./repo";
-import type { CommandResult } from "./types";
-
-function runAll(inputs: string[]): CommandResult {
-  let result: CommandResult = { repo: createEmptyRepo(), output: "" };
-
-  for (const input of inputs) {
-    result = execute(result.repo, input);
-  }
-
-  return result;
-}
+import { runAll } from "./test-utils";
 
 describe("touch", () => {
   it("creates an empty file", () => {

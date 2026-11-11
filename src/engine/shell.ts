@@ -1,7 +1,7 @@
 import type { ParsedCommand } from "./parse";
 import type { CommandResult, Repo } from "./types";
 
-type ShellCommand = (repo: Repo, command: ParsedCommand) => CommandResult;
+export type ShellCommand = (repo: Repo, command: ParsedCommand) => CommandResult;
 
 function hasFile(repo: Repo, path: string): boolean {
   return Object.hasOwn(repo.workingDir, path);

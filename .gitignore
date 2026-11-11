@@ -12,9 +12,14 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # next.js
 /.next/
+/.next-e2e/
 /out/
 
 # production
@@ -23,6 +28,9 @@
 # misc
 .DS_Store
 *.pem
+/tmp/
+.zed/
+AGENTS.md
 
 # debug
 npm-debug.log*
@@ -30,11 +38,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
+!.env.example
 
-# vercel
+# vercel / neon local
 .vercel
+.neon
 
 # typescript
 *.tsbuildinfo

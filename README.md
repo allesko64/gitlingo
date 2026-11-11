@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Git Lingo
 
-## Getting Started
+Learn Git by typing real commands in a fake in-browser shell. Lessons check what you did; progress saves for guests (local) and signed-in users (Neon Postgres).
 
-First, run the development server:
+## Stack
+
+- Next.js + React + Tailwind
+- Better Auth (email/password + optional Google)
+- Neon Postgres + Drizzle ORM
+- Vitest + Playwright
+
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local
+# Fill DATABASE_URL, BETTER_AUTH_SECRET, BETTER_AUTH_URL
+pnpm db:migrate
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Useful scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Dev server |
+| `pnpm test` | Unit tests |
+| `pnpm e2e` | Playwright (builds + starts the app) |
+| `pnpm db:migrate` | Apply Drizzle migrations |
+| `pnpm db:check` | Print DB name + tables |
+| `pnpm build` / `pnpm start` | Production build |
 
-## Learn More
+### Google sign-in (optional)
 
-To learn more about Next.js, take a look at the following resources:
+1. Create an OAuth Web client in Google Cloud Console.
+2. Redirect URI: `{BETTER_AUTH_URL}/api/auth/callback/google`
+3. Set `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `NEXT_PUBLIC_GOOGLE_AUTH=1` in `.env.local`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Vercel + Neon)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push to GitHub and import the project in Vercel.
+2. Set production env vars from `.env.example` (`BETTER_AUTH_URL` must be the live origin, e.g. `https://gitlingo.ayulabs.tech`).
+3. Run migrations against the production Neon DB once.
+4. Add the custom domain in Vercel and point DNS at it.

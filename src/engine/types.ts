@@ -6,6 +6,7 @@ export type FileTree = Record<FilePath, string>;
 
 export interface Commit {
   hash: CommitHash;
+  order: number;
   message: string;
   parents: CommitHash[];
   tree: FileTree;
