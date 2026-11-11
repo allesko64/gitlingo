@@ -4,11 +4,13 @@ type Props = {
   title: string;
   sub: string;
   as?: "h1" | "h2";
+  /** Landing sections stay centered; list pages align with the card grid. */
+  align?: "center" | "start";
 };
 
-export function SectionHeader({ id, label, title, sub, as: Heading = "h2" }: Props) {
+export function SectionHeader({ id, label, title, sub, as: Heading = "h2", align = "center" }: Props) {
   return (
-    <div className="mx-auto max-w-heading text-center">
+    <div className={align === "center" ? "mx-auto max-w-heading text-center" : "max-w-heading text-left"}>
       <p className="font-pixel text-xs tracking-wide text-white/50">{label}</p>
       <Heading
         id={id}

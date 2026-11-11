@@ -78,7 +78,7 @@ export function LessonPlayer({ id }: { id: string }) {
 
   return (
     <Grid className="lesson-layout">
-      <section aria-labelledby="lesson-title" className="lesson-column lesson-story col-span-12 xl:col-span-6">
+      <section aria-labelledby="lesson-title" className="lesson-column lesson-story col-span-12 lg:col-span-6">
         <div className="lesson-intro">
           <p className="font-pixel text-xs tracking-wide text-white/50">
             {lessonCopy.levelLabel(number)}
@@ -118,9 +118,9 @@ export function LessonPlayer({ id }: { id: string }) {
         )}
       </section>
 
-      <div className="lesson-column lesson-workspace col-span-12 flex min-w-0 flex-col gap-4 xl:col-span-6">
+      <div className="lesson-column lesson-workspace col-span-12 flex min-w-0 flex-col gap-4 lg:col-span-6">
         {currentStep !== undefined && (
-          <p className="rounded-ui border border-white/10 bg-white/5 px-4 py-3 text-base text-white xl:hidden">
+          <p className="rounded-ui border border-white/10 bg-white/5 px-4 py-3 text-base text-white lg:hidden">
             <span className="mb-1 block font-pixel text-[10px] tracking-wide text-white/70">
               {lessonCopy.current.toUpperCase()}
             </span>

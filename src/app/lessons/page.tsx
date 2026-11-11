@@ -18,11 +18,18 @@ export default function LessonsPage() {
     <>
       <AppTopBar />
       <main className="flex-1 pt-32 pb-24">
-              <Container>
-        <SectionHeader as="h1" id="levels-page-title" label={text.label} title={text.title} sub={text.sub} />
-        <div className="mt-12">
-          <LevelsList />
-        </div>
+        <Container>
+          <SectionHeader
+            as="h1"
+            id="levels-page-title"
+            label={text.label}
+            title={text.title}
+            sub={text.sub}
+            align="start"
+          />
+          <div className="mt-12">
+            <LevelsList />
+          </div>
         </Container>
       </main>
       <Footer />

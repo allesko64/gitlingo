@@ -241,7 +241,8 @@
   overflow-wrap: anywhere;
 }
 
-@media (min-width: 1280px) {
+/* Side-by-side lesson layout from lg (1024px), not only xl — fits 100% zoom laptops. */
+@media (min-width: 1024px) {
   .lesson-layout {
     height: calc(100svh - var(--app-header-height) - var(--spacing-8));
   }
@@ -278,7 +279,6 @@
   .lesson-steps::-webkit-scrollbar {
     display: none;
   }
-
 
   .lesson-terminal {
     flex: 3 1 0%;
