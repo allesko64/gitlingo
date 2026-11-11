@@ -41,6 +41,6 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy (Vercel + Neon)
 
 1. Push to GitHub and import the project in Vercel.
-2. Set production env vars from `.env.example` (`BETTER_AUTH_URL` must be the live origin, e.g. `https://gitlingo.ayulabs.tech`).
+2. Set production env vars from `.env.example` (`BETTER_AUTH_URL` must be exactly `https://gitlingo.ayushlabs.tech`, no trailing slash).
 3. Run migrations against the production Neon DB once.
 4. Add the custom domain in Vercel and point DNS at it.
