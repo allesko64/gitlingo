@@ -10,6 +10,13 @@ import { SectionDivider } from "@/components/layout/SectionDivider";
 import { copy } from "@/lib/landing/copy";
 import { getSiteUrl } from "@/lib/site";
 
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "Git Lingo — Learn git by actually using it",
+} as const;
+
 export const metadata: Metadata = {
   title: { absolute: copy.meta.title },
   description: copy.meta.description,
@@ -20,11 +27,13 @@ export const metadata: Metadata = {
     siteName: "Git Lingo",
     type: "website",
     url: "/",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: copy.meta.title,
     description: copy.meta.description,
+    images: ["/og.png"],
   },
 };
 

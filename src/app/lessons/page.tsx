@@ -14,6 +14,18 @@ export const metadata: Metadata = {
     title: "Levels · Git Lingo",
     description: "Six short levels that take you from your first repository to merging branches.",
     url: "/lessons",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Git Lingo — Learn git by actually using it",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
   },
 };
 
