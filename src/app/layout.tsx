@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: copy.meta.description,
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Git Lingo — Learn git by actually using it",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: copy.meta.title,
     description: copy.meta.description,
     creator: "@ayush__64",
-    images: ["/twitter-image"],
+    images: ["/og.png"],
   },
   robots: {
     index: true,
