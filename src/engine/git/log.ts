@@ -15,7 +15,10 @@ function decorate(repo: Repo, hash: CommitHash): string {
   const names = Object.keys(repo.branches)
     .filter((name) => repo.branches[name] === hash)
     .sort();
-  const others = names.filter((name) => name !== repo.head);
+  const remoteNames = Object.keys(repo.remoteRefs)
+    .filter((name) => repo.remoteRefs[name] === hash)
+    .sort();
+  const others = [...names.filter((name) => name !== repo.head), ...remoteNames];
   const labels = names.includes(repo.head) ? [`HEAD -> ${repo.head}`, ...others] : others;
 
   return labels.length > 0 ? ` (${labels.join(", ")})` : "";

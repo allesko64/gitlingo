@@ -3,9 +3,17 @@ import type { CommandResult, Repo } from "../types";
 import { add } from "./add";
 import { branch } from "./branch";
 import { commit } from "./commit";
+import { diff } from "./diff";
+import { fetch } from "./fetch";
 import { init } from "./init";
 import { log } from "./log";
 import { merge } from "./merge";
+import { pull } from "./pull";
+import { push } from "./push";
+import { remote } from "./remote";
+import { reset } from "./reset";
+import { restore } from "./restore";
+import { stash } from "./stash";
 import { status } from "./status";
 import { checkout, switchBranch } from "./switch";
 
@@ -17,10 +25,18 @@ const subcommands: Record<string, GitSubcommand> = {
   add,
   commit,
   log,
+  diff,
+  restore,
+  reset,
+  stash,
   branch,
   switch: switchBranch,
   checkout,
   merge,
+  remote,
+  push,
+  fetch,
+  pull,
 };
 
 export const git: ShellCommand = (repo, { args }) => {

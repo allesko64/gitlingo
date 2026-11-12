@@ -1,4 +1,4 @@
-import type { CommandResult, FilePath, FileTree, Repo } from "../types";
+import type { CommandResult, CommitHash, FilePath, FileTree, Repo } from "../types";
 import { allPaths, ancestors, fileIn, moveFiles, makeCommit } from "./helpers";
 import { findBlockers } from "./switch";
 
@@ -40,24 +40,8 @@ function countChanged(before: FileTree, after: FileTree): string {
   return count === 1 ? "1 file changed" : `${count} files changed`;
 }
 
-export function merge(repo: Repo, args: string[]): CommandResult {
-  if (args.length === 0) {
-    return { repo, output: "fatal: no branch specified (try: git merge <branch>)" };
-  }
-  if (args[0].startsWith("-")) {
-    return { repo, output: `git merge: option '${args[0]}' is not supported yet` };
-  }
-  if (args.length > 1) {
-    return { repo, output: "git merge: only one branch at a time" };
-  }
-
-  const name = args[0];
-  if (!Object.hasOwn(repo.branches, name)) {
-    return { repo, output: `merge: ${name} - not something we can merge` };
-  }
-
+export function mergeInto(repo: Repo, theirs: CommitHash, message: string): CommandResult {
   const ours = repo.branches[repo.head];
-  const theirs = repo.branches[name];
   const ourHistory = ancestors(repo, ours);
 
   if (ourHistory.includes(theirs)) {
@@ -104,7 +88,7 @@ export function merge(repo: Repo, args: string[]): CommandResult {
     return { repo, output: blocked };
   }
 
-  const mergeCommit = makeCommit(repo, `Merge branch '${name}'`, [ours, theirs], tree);
+  const mergeCommit = makeCommit(repo, message, [ours, theirs], tree);
 
   return {
     repo: {
@@ -115,4 +99,24 @@ export function merge(repo: Repo, args: string[]): CommandResult {
     },
     output: `Merge made by the 'ort' strategy.\n ${countChanged(ourTree, tree)}`,
   };
+}
+
+export function merge(repo: Repo, args: string[]): CommandResult {
+  if (args.length === 0) {
+    return { repo, output: "fatal: no branch specified (try: git merge <branch>)" };
+  }
+  if (args[0].startsWith("-")) {
+    return { repo, output: `git merge: option '${args[0]}' is not supported yet` };
+  }
+  if (args.length > 1) {
+    return { repo, output: "git merge: only one branch at a time" };
+  }
+
+  const name = args[0];
+  const target = Object.hasOwn(repo.branches, name) ? repo.branches[name] : repo.remoteRefs[name];
+  if (target === undefined) {
+    return { repo, output: `merge: ${name} - not something we can merge` };
+  }
+
+  return mergeInto(repo, target, `Merge branch '${name}'`);
 }

@@ -8,5 +8,9 @@ export function createEmptyRepo(): Repo {
     commits: {},
     branches: {},
     head: "main",
+    stash: [],
+    remote: null,
+    remoteRefs: {},
+    upstream: {},
   };
 }

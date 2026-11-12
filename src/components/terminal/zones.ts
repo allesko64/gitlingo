@@ -1,6 +1,17 @@
-import { isUnborn } from "@/engine/git/helpers";
+import { fileIn, headTree, isUnborn } from "@/engine/git/helpers";
 import { computeStatus } from "@/engine/git/status";
 import type { FilePath, Repo } from "@/engine/types";
+
+function isOnRemote(repo: Repo, path: FilePath): boolean {
+  if (repo.remote === null) {
+    return false;
+  }
+  const pushed = repo.remoteRefs[`${repo.remote.name}/${repo.head}`];
+  if (pushed === undefined) {
+    return false;
+  }
+  return fileIn(repo.commits[pushed].tree, path) === fileIn(headTree(repo), path);
+}
 
 export type Zone = "working" | "staging" | "local" | "remote";
 
@@ -22,5 +33,5 @@ export function fileZone(repo: Repo, path: FilePath): Zone {
   if (isUnborn(repo)) {
     return "working";
   }
-  return "local";
+  return isOnRemote(repo, path) ? "remote" : "local";
 }

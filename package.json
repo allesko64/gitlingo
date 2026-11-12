@@ -19,6 +19,7 @@
     "@better-auth/drizzle-adapter": "^1.7.21",
     "@neon/config": "^1.14.0",
     "@neondatabase/serverless": "^1.2.0",
+    "@phosphor-icons/react": "^2.1.10",
     "better-auth": "^1.7.21",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.4",

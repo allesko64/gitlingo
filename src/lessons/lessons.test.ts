@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { execute } from "@/engine/execute";
+import { createEmptyRepo } from "@/engine/repo";
 import { getLesson, lessons } from "./lessons";
 import { advance, isFinished, startRepo } from "./progress";
 import type { Lesson } from "./types";
@@ -44,7 +45,7 @@ describe("lessons", () => {
       });
 
       it("sets up without errors", () => {
-        let repo = startRepo({ ...lesson, setup: [] });
+        let repo = createEmptyRepo();
         for (const input of lesson.setup) {
           const result = execute(repo, input);
           expect(result.output, input).not.toMatch(ERROR_START);

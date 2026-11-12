@@ -3,8 +3,8 @@ import { lessons } from "@/lessons/lessons";
 import { copy, FIRST_LEVEL_HREF } from "./copy";
 
 describe("landing copy", () => {
-  it("previews the 6 launch levels in order", () => {
-    expect(copy.levels.list.map((level) => level.title)).toEqual([
+  it("starts with the 6 launch levels in order", () => {
+    expect(copy.levels.list.slice(0, 6).map((level) => level.title)).toEqual([
       "First repo",
       "Stage a file",
       "Commit",
@@ -34,6 +34,11 @@ describe("landing copy", () => {
 
   it("points every call to action at level 1", () => {
     expect(FIRST_LEVEL_HREF).toBe(`/lessons/${lessons[0].id}`);
+  });
+
+  it("splits every level into exactly one chapter", () => {
+    const total = copy.levels.chapters.reduce((sum, chapter) => sum + chapter.count, 0);
+    expect(total).toBe(lessons.length);
   });
 
   it("previews exactly the lessons the app has", () => {

@@ -1,12 +1,13 @@
 "use client";
 
 import { Fragment, useEffect, useState } from "react";
+import { GithubLogo, XLogo } from "@phosphor-icons/react";
 import { copy, FIRST_LEVEL_HREF } from "@/lib/landing/copy";
 import { cn } from "@/lib/utils";
 import { AuthControls } from "../auth/AuthControls";
 import { Container } from "../layout/Container";
 import { Button } from "../ui/Button";
-import { GLASS_EDGE } from "../ui/glass";
+import { GLASS, GLASS_EDGE } from "../ui/glass";
 import { BranchIcon } from "./PixelIcons";
 
 export function Navbar() {
@@ -60,6 +61,29 @@ export function Navbar() {
                 </Fragment>
               ))}
             </ul>
+
+            <div className="flex items-center gap-2">
+              {copy.nav.social.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className={cn(
+                    "grid size-10 place-items-center rounded-ui text-white/80 transition-colors hover:bg-white/10 hover:text-white",
+                    GLASS,
+                    pastHero ? "bg-navy/60 backdrop-blur-lg" : undefined,
+                  )}
+                >
+                  {item.network === "x" ? (
+                    <XLogo size={16} weight="bold" aria-hidden />
+                  ) : (
+                    <GithubLogo size={16} weight="bold" aria-hidden />
+                  )}
+                </a>
+              ))}
+            </div>
 
             <AuthControls size="nav" />
 

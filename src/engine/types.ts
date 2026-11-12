@@ -12,6 +12,18 @@ export interface Commit {
   tree: FileTree;
 }
 
+export interface StashEntry {
+  message: string;
+  workingDir: FileTree;
+  index: FileTree;
+}
+
+export interface Remote {
+  name: string;
+  url: string;
+  branches: Record<string, CommitHash>;
+}
+
 export interface Repo {
   initialized: boolean;
   workingDir: FileTree;
@@ -19,6 +31,10 @@ export interface Repo {
   commits: Record<CommitHash, Commit>;
   branches: Record<string, CommitHash>;
   head: string;
+  stash: StashEntry[];
+  remote: Remote | null;
+  remoteRefs: Record<string, CommitHash>;
+  upstream: Record<string, string>;
 }
 
 export interface CommandResult {

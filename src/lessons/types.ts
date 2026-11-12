@@ -16,6 +16,7 @@ export interface Lesson {
   title: string;
   intro: string;
   setup: string[];
+  prepare?: (repo: Repo) => Repo;
   steps: LessonStep[];
   solution: string[];
 }

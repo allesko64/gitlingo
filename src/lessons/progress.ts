@@ -10,7 +10,7 @@ export function startRepo(lesson: Lesson): Repo {
     repo = execute(repo, input).repo;
   }
 
-  return repo;
+  return lesson.prepare === undefined ? repo : lesson.prepare(repo);
 }
 
 export function advance(lesson: Lesson, completed: number, ctx: StepContext): number {

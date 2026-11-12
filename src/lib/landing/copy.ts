@@ -21,6 +21,14 @@ export const copy = {
       { label: "The four zones", href: "#four-zones" },
       { label: "Levels", href: "#levels" },
     ],
+    social: [
+      { label: "Git Lingo on X", href: "https://x.com/ayush__64", network: "x" },
+      {
+        label: "Git Lingo on GitHub",
+        href: "https://github.com/allesko64/gitlingo",
+        network: "github",
+      },
+    ],
     cta: "Start level 1",
   },
   hero: {
@@ -102,8 +110,13 @@ export const copy = {
   },
   levels: {
     label: "3.0 · THE LEVELS",
-    title: "Six levels to your first real git workflow.",
+    title: "Three chapters, from first commit to pushing with a team.",
     sub: "Start at level 1. Each level unlocks the next.",
+    chapters: [
+      { title: "The basics", line: "Save your work, look back at it, and branch out.", count: 6 },
+      { title: "Seeing and undoing", line: "Read what changed, and take it back when you need to.", count: 5 },
+      { title: "Working with others", line: "Push, fetch and pull with a shared copy online.", count: 3 },
+    ],
     start: "Start",
     locked: "Locked",
     unlocksAfter: (level: number) => `Unlocks after level ${level}`,
@@ -114,8 +127,16 @@ export const copy = {
       { title: "History", command: "git log", line: "Look back at every snapshot you made." },
       { title: "Branch and switch", command: "git switch", line: "Try an idea on its own line of work." },
       { title: "Merge", command: "git merge", line: "Bring two lines of work back together." },
+      { title: "See the difference", command: "git diff", line: "Read exactly what changed before you save." },
+      { title: "Undo a change", command: "git restore", line: "Throw away an edit or unstage a file." },
+      { title: "Fix the last commit", command: "git commit --amend", line: "Replace a commit message typo." },
+      { title: "Rewind a commit", command: "git reset", line: "Move the branch back, softly or hard." },
+      { title: "Put work aside", command: "git stash", line: "Park half-done work and pick it up later." },
+      { title: "Push to a remote", command: "git push", line: "Send your commits to a shared copy online." },
+      { title: "Get your teammate's work", command: "git pull", line: "Fetch what changed and bring it in." },
+      { title: "When push is rejected", command: "git pull, git push", line: "Pull first, then push again." },
     ],
-    more: "More levels coming: remotes, rebase, reset, reflog, stash, cherry-pick.",
+    more: "More levels coming: merge conflicts, rebase, reflog, cherry-pick.",
   },
   finalCta: {
     title: "Ready to stop being scared of git?",

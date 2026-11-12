@@ -35,6 +35,38 @@ export function ancestors(repo: Repo, start: CommitHash): CommitHash[] {
   return found;
 }
 
+export function resolveRef(repo: Repo, ref: string): CommitHash | null {
+  const headMatch = /^HEAD(?:~(\d+))?$/.exec(ref);
+
+  if (headMatch !== null) {
+    if (isUnborn(repo)) {
+      return null;
+    }
+
+    let hash = repo.branches[repo.head];
+    for (let steps = Number(headMatch[1] ?? 0); steps > 0; steps--) {
+      const parent = repo.commits[hash].parents[0];
+      if (parent === undefined) {
+        return null;
+      }
+      hash = parent;
+    }
+    return hash;
+  }
+
+  if (Object.hasOwn(repo.branches, ref)) {
+    return repo.branches[ref];
+  }
+  if (Object.hasOwn(repo.remoteRefs, ref)) {
+    return repo.remoteRefs[ref];
+  }
+  if (Object.hasOwn(repo.commits, ref)) {
+    return ref;
+  }
+
+  return null;
+}
+
 export function makeCommit(
   repo: Repo,
   message: string,
