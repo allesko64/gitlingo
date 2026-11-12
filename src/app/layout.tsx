@@ -28,12 +28,21 @@ export const metadata: Metadata = {
     siteName: "Git Lingo",
     title: copy.meta.title,
     description: copy.meta.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Git Lingo — Learn git by actually using it",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: copy.meta.title,
     description: copy.meta.description,
     creator: "@ayush__64",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
