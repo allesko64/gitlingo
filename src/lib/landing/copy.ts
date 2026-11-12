@@ -151,6 +151,10 @@ export const copy = {
     author: "Aks",
     authorHref: "https://x.com/ayush__64",
     authorLabel: "Aks on X (@ayush__64)",
+    social: [
+      { icon: "x", label: "Follow @ayush__64 on X", href: "https://x.com/ayush__64" },
+      { icon: "github", label: "Git Lingo source on GitHub", href: "https://github.com/allesko64/gitlingo" },
+    ],
   },
   statusCards: [
     { label: "Level done", name: "First repo", status: "done", command: false },

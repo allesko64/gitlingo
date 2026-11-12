@@ -15,18 +15,18 @@ export function AppTopBar() {
         <Link
           href="/"
           className={cn(
-            "flex h-12 items-center gap-2 rounded-ui px-3 text-lg font-medium leading-none tracking-[-0.02em] text-white",
+            "flex h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-ui px-3 text-lg font-medium leading-none tracking-[-0.02em] text-white",
             GLASS,
           )}
         >
           <BranchIcon className="size-4" />
-          {copy.nav.wordmark}
+          <span className="max-[360px]:sr-only">{copy.nav.wordmark}</span>
         </Link>
         <div className="flex items-center gap-2">
           <Link
             href="/lessons"
             className={cn(
-              "flex h-12 items-center rounded-ui px-4 text-[15px] font-medium text-white/80 transition-colors hover:text-white",
+              "flex h-12 shrink-0 items-center whitespace-nowrap rounded-ui px-3 text-[15px] font-medium text-white/80 transition-colors hover:text-white sm:px-4",
               GLASS,
             )}
           >

@@ -33,13 +33,13 @@ export function Navbar() {
         <nav aria-label="Main" className="flex items-center justify-between gap-4">
           <a
             href="#hero"
-            className="flex h-10 items-center gap-2 rounded-ui text-[22px] font-medium leading-none tracking-[-0.02em] text-white"
+            className="flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-ui text-[22px] font-medium leading-none tracking-[-0.02em] text-white"
           >
             <BranchIcon className="size-4" />
             {copy.nav.wordmark}
           </a>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <ul
               className={cn(
                 "hidden items-center rounded-ui transition-[background-color,backdrop-filter] duration-200 md:flex",
@@ -62,7 +62,7 @@ export function Navbar() {
               ))}
             </ul>
 
-            <div className="flex items-center gap-2">
+            <div className="hidden items-center gap-2 md:flex">
               {copy.nav.social.map((item) => (
                 <a
                   key={item.href}
@@ -87,7 +87,7 @@ export function Navbar() {
 
             <AuthControls size="nav" />
 
-            <Button href={FIRST_LEVEL_HREF} size="nav">
+            <Button href={FIRST_LEVEL_HREF} size="nav" className="hidden whitespace-nowrap sm:inline-flex">
               {copy.nav.cta}
             </Button>
           </div>

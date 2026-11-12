@@ -9,7 +9,7 @@ import { lessonCopy } from "@/lib/lessonCopy";
 import { cn } from "@/lib/utils";
 
 const PILL = cn(
-  "flex h-10 items-center rounded-ui px-4 text-[15px] font-medium text-white/80 transition-colors hover:text-white",
+  "flex h-10 shrink-0 items-center whitespace-nowrap rounded-ui px-3 text-[15px] font-medium text-white/80 transition-colors hover:text-white sm:px-4",
   GLASS,
 );
 

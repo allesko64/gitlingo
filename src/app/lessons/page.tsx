@@ -8,11 +8,11 @@ import { lessonCopy } from "@/lib/lessonCopy";
 
 export const metadata: Metadata = {
   title: "Levels",
-  description: "Six short levels that take you from your first repository to merging branches.",
+  description: "Fourteen short levels in three chapters: from your first repository to pushing and pulling with a team.",
   alternates: { canonical: "/lessons" },
   openGraph: {
     title: "Levels · Git Lingo",
-    description: "Six short levels that take you from your first repository to merging branches.",
+    description: "Fourteen short levels in three chapters: from your first repository to pushing and pulling with a team.",
     url: "/lessons",
     images: [
       {

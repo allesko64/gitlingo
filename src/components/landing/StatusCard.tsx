@@ -57,7 +57,7 @@ export function StatusCard({ label, name, status, command, duration, delay, clas
 }
 
 const PLACEMENT = [
-  { duration: 6, delay: 0, position: "-top-12 right-4 lg:right-auto lg:-left-12" },
+  { duration: 6, delay: 0, position: "-top-5 right-4 lg:-top-12 lg:right-auto lg:-left-12" },
   { duration: 7, delay: 2.3, position: "right-4 bottom-1 lg:-top-6 lg:bottom-auto lg:right-4" },
   { duration: 5.5, delay: 4.1, position: "hidden lg:block lg:-bottom-8 lg:right-8" },
 ];
